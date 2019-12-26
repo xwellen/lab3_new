@@ -3,7 +3,7 @@ import java.util.Random;
 
 public class Garden extends Entity{
     private Plants[] plants;
-    private boolean tramled;
+    private boolean trampled;
 
 
 
@@ -12,8 +12,8 @@ public class Garden extends Entity{
         this.name = name;
     }
 
-    public void setTramled(boolean tramled) {
-        this.tramled = tramled;
+    public void setTrampled(boolean trampled) {
+        this.trampled = trampled;
     }
 
     public void mess() {

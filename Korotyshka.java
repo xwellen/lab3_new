@@ -61,9 +61,4 @@ public class Korotyshka extends MovingEntity {
         return false;
     }
 
-    public void come(Entity entity) {
-        this.positionX = entity.positionX;
-        this.positionY = entity.positionY;
-        System.out.println(name + "podbejal k" + entity.name + getCoordinates());
-    }
 }
