@@ -4,11 +4,6 @@ public class Bullet extends FlyingEntity {
 
     }
 
-    @Override
-    public int getPosition() {
-        return 0;
-    }
-
 
 
     @Override

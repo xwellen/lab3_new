@@ -33,11 +33,6 @@ public class Korotyshka extends MovingEntity {
     }
 
     @Override
-    public void toptat(Garden garden) {
-
-    }
-
-    @Override
     public boolean isCatched() {
         return catched;
     }
@@ -51,20 +46,10 @@ public class Korotyshka extends MovingEntity {
         movingEntity.setCatched(false);
     }
 
-    @Override
-    public int getPosition() {
-        return 0;
-    }
-
 
     @Override
     public boolean checkAndCatch(MovingEntity o) {
         return false;
-    }
-
-    @Override
-    public void see(Object o) {
-
     }
 
     public void stopWork() {
@@ -76,7 +61,7 @@ public class Korotyshka extends MovingEntity {
         return false;
     }
 
-    public void come(MovingEntity entity) {
+    public void come(Entity entity) {
         this.positionX = entity.positionX;
         this.positionY = entity.positionY;
         System.out.println(name + "podbejal k" + entity.name + getCoordinates());

@@ -6,12 +6,6 @@ public class Gun extends Entity {
         this.ammo = ammo;
     }
 
-    @Override
-    public int getPosition() {
-        return 0;
-    }
-
-
 
     @Override
     public boolean checkAndCatch(MovingEntity o) {

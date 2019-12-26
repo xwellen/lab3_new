@@ -1,4 +1,9 @@
 public class Dog extends MovingEntity {
+
+    public Dog(String name) {
+        this.name = name;
+    }
+
     @Override
     public void go(Entity o) {
 
@@ -20,16 +25,6 @@ public class Dog extends MovingEntity {
     }
 
     @Override
-    public void toptat(Garden garden) {
-
-    }
-
-    @Override
-    public void see(Object o) {
-
-    }
-
-    @Override
     public boolean isCatched() {
         return false;
     }
@@ -38,12 +33,6 @@ public class Dog extends MovingEntity {
     public void release() {
 
     }
-
-    @Override
-    public int getPosition() {
-        return 0;
-    }
-    
 
     @Override
     public boolean checkAndCatch(MovingEntity o) {

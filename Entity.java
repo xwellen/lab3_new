@@ -7,6 +7,7 @@ public abstract class Entity implements Positionable {
         return name;
     }
 
+
     public String getCoordinates() {
         return "(" + positionX + ":" + positionY + ")";
     }
