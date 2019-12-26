@@ -1,26 +1,23 @@
-public class Garden implements Positionable{
+public class Garden extends Entity{
     private Plants[] plants;
     private Korotyshka[] workers;
     public void mess(Garden garden){
 
     }
 
+    public Garden(Plants[] plants) {
+        this.plants = plants;
+    }
+
     public boolean isMessed(){
         return true;
     }
 
-    @Override
     public int getPosition() {
         return 0;
     }
 
-    @Override
-    public void setPosition(int position) {
-
-    }
-
-    @Override
-    public boolean isNear(Object o, int radius) {
+    public boolean checkAndCatch(MovingEntity o) {
         return false;
     }
 }

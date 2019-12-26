@@ -9,13 +9,10 @@ public class Bullet extends FlyingEntity {
         return 0;
     }
 
-    @Override
-    public void setPosition(int position) {
 
-    }
 
     @Override
-    public boolean isNear(Object o, int radius) {
+    public boolean checkAndCatch(MovingEntity o) {
         return false;
     }
 }

@@ -1,6 +1,6 @@
 public interface Positionable {
     int getPosition();
-    void setPosition(int position);
-    boolean isNear(Object o, int radius);
+    void setPosition(int positionX, int positionY);
+    boolean checkAndCatch(MovingEntity o);
 
 }

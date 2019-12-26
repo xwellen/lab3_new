@@ -1,10 +1,14 @@
-public class Trap implements Positionable{
+public class Trap implements Positionable {
     private MovingEntity prey;
     private String name;
-    public void catchEntity(MovingEntity movingEntity){
+    private int positionX;
+    private int positionY;
+
+    public void catchEntity(MovingEntity movingEntity) {
 
     }
-    public void release(){
+
+    public void release() {
 
     }
 
@@ -14,12 +18,19 @@ public class Trap implements Positionable{
     }
 
     @Override
-    public void setPosition(int position) {
-
+    public void setPosition(int positionX, int positionY) {
+        this.positionX = positionX;
+        this.positionY = positionY;
     }
 
     @Override
-    public boolean isNear(Object o, int radius) {
-        return false;
+    public boolean checkAndCatch(MovingEntity o) {
+        if (positionX == o.positionX && positionY == o.positionY) {
+
+            o.setCatched(true);
+            return true;
+        } else {
+            return false;
+        }
     }
 }

@@ -1,12 +1,30 @@
-public class Korotyshka extends MovingEntity{
+public class Korotyshka extends MovingEntity {
     boolean CanReleaseItself;
     boolean isWorking;
     Gun Armed;
     int Accuracy;
 
-    @Override
-    public void go(Object o) {
+    public Korotyshka(String name) {
+        this.name = name;
+    }
 
+    @Override
+    public void go(Entity o) {
+        positionX = o.positionX - 1;
+        positionY = o.positionY - 1;
+        System.out.println(name + "pobejal za" + o.getName() + getCoordinates());
+    }
+
+    @Override
+    public void stop() {
+        System.out.println(name + " has stopped in" + getCoordinates());
+    }
+
+    @Override
+    public void run(int x, int y) {
+        positionX = positionX + x;
+        positionY = positionY + y;
+        System.out.println(name + " run " + getCoordinates());
     }
 
     @Override
@@ -21,7 +39,7 @@ public class Korotyshka extends MovingEntity{
 
     @Override
     public boolean isCatched() {
-        return false;
+        return catched;
     }
 
     @Override
@@ -29,8 +47,8 @@ public class Korotyshka extends MovingEntity{
         //освободить себя
     }
 
-    public void release(MovingEntity movingEntity){
-        //освободить кого-нибудь
+    public void release(MovingEntity movingEntity) {
+        movingEntity.setCatched(false);
     }
 
     @Override
@@ -38,13 +56,9 @@ public class Korotyshka extends MovingEntity{
         return 0;
     }
 
-    @Override
-    public void setPosition(int position) {
-
-    }
 
     @Override
-    public boolean isNear(Object o, int radius) {
+    public boolean checkAndCatch(MovingEntity o) {
         return false;
     }
 
@@ -53,13 +67,18 @@ public class Korotyshka extends MovingEntity{
 
     }
 
-    public void stopWork(){
+    public void stopWork() {
 
     }
 
-    public boolean shoot(Gun gun, Object o){
+    public boolean shoot(Gun gun, Object o) {
         //стреляем с помощью gun в o, если попали(смотрим accuracy>100) то возвращаем true
         return false;
     }
 
+    public void come(MovingEntity entity) {
+        this.positionX = entity.positionX;
+        this.positionY = entity.positionY;
+        System.out.println(name + "podbejal k" + entity.name + getCoordinates());
+    }
 }

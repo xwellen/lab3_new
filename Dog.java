@@ -1,6 +1,16 @@
 public class Dog extends MovingEntity {
     @Override
-    public void go(Object o) {
+    public void go(Entity o) {
+
+    }
+
+    @Override
+    public void stop() {
+
+    }
+
+    @Override
+    public void run(int x, int y) {
 
     }
 
@@ -33,14 +43,10 @@ public class Dog extends MovingEntity {
     public int getPosition() {
         return 0;
     }
+    
 
     @Override
-    public void setPosition(int position) {
-
-    }
-
-    @Override
-    public boolean isNear(Object o, int radius) {
+    public boolean checkAndCatch(MovingEntity o) {
         return false;
     }
 }

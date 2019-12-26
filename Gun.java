@@ -1,6 +1,7 @@
 public class Gun extends Entity {
     Bullet ammo;
 
+
     public Gun(Bullet ammo) {
         this.ammo = ammo;
     }
@@ -10,13 +11,10 @@ public class Gun extends Entity {
         return 0;
     }
 
-    @Override
-    public void setPosition(int position) {
 
-    }
 
     @Override
-    public boolean isNear(Object o, int radius) {
+    public boolean checkAndCatch(MovingEntity o) {
         return false;
     }
 
