@@ -1,16 +1,23 @@
-public class Gun extends Entity {
+public class Gun extends Entity{
     Bullet ammo;
 
-
     public Gun(Bullet ammo) {
-        this.ammo = ammo;
+        this.ammo = new Bullet();
     }
 
+    public boolean launchAmmo(Entity entity) throws Exception{
+        if (ammo == null){
+            throw new Exception("В ружье нет пуль!");
+        }
 
-    @Override
-    public boolean checkAndCatch(MovingEntity o) {
-        return false;
+        try{
+            ammo.flyTo(entity);
+            this.ammo = null;
+            return true;
+        }
+        catch (Exception ex){
+            System.out.println(ex.getMessage());
+            return false;
+        }
     }
-
-
 }

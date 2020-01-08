@@ -1,3 +1,3 @@
 public enum Plants {
-    Cucumber, Tomato, Stawberry
+    Cucumber, Tomato, Stawberry, Dead
 }

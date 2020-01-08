@@ -1,39 +1,48 @@
 public class Main {
     public static void main(String[] args) {
-        Korotyshka klops = new Korotyshka("Klops");
-        Korotyshka neznayka = new Korotyshka("Neznayka");
-        Korotyshka fix = new Korotyshka("Fix");
-        Korotyshka fex = new Korotyshka("Fex");
-        Korotyshka milordik = new Korotyshka("Milordik");
-        Korotyshka cezarino = new Korotyshka("Cezarino");
-        Dog sobaka1 = new Dog("Sobaka1");
-        Dog sobaka2 = new Dog("Sobaka2");   //выше создаём всех чертей
+        Korotyshka klops = new Korotyshka("Клопс", true);
+        Korotyshka neznayka = new Korotyshka("Незнайка");
+        Korotyshka fix = new Korotyshka("Фикс",true);
+        Korotyshka fex = new Korotyshka("Фекс", true);
+        Korotyshka milordik = new Korotyshka("Милордик", true);
+        Korotyshka cezarino = new Korotyshka("Цезарино", true);
+        Dog sobaka1 = new Dog("Собака1");
+        Dog sobaka2 = new Dog("Собака2");   //выше создаём всех чертей
         Trap trap = new Trap();
-        Plants[] klubnika = new Plants[1];
-        klubnika[0] = Plants.Stawberry;
-        Garden gardenWithStrawberry = new Garden(klubnika, "Strowberry garden");
-        Plants[] ogurtsiIPomidory = new Plants[2];
-        ogurtsiIPomidory[0] = Plants.Cucumber;
-        ogurtsiIPomidory[1] = Plants.Tomato;
-        Garden gardenWithogurtsiIPomidory = new Garden(ogurtsiIPomidory, "Cucucmber tomato garden");  //выше создаём и заполняем
+        Plants[] klubnika = new Plants[15];
+        for (int i = 0; i < klubnika.length; i++) {
+            klubnika[i] = Plants.Stawberry;
+        }
+        Garden gardenWithStrawberry = new Garden(klubnika, "Огород с клубникой");
+        Plants[] ogurtsiIPomidory = new Plants[15];
+        for (int i = 0; i < ogurtsiIPomidory.length; i++) {
+            if (i<ogurtsiIPomidory.length/2) ogurtsiIPomidory[i] = Plants.Cucumber;
+            else ogurtsiIPomidory[i] = Plants.Tomato;
+        }
+        Garden gardenWithogurtsiIPomidory = new Garden(ogurtsiIPomidory, "Огород с огурцами помидорами");  //выше создаём и заполняем
 
         trap.setPosition(1,2);  //поставили коорды ловушки
         gardenWithStrawberry.setPosition(-1, -1); //поставили коорды грядки с Клубничкой ;)
         gardenWithogurtsiIPomidory.setPosition(-3, -3); //поставили коорды грядки с овощами
 
-        neznayka.see(klops);  //Увидев, что к Милордику, Незнайка
-        sobaka1.come(klops);  //что к Милордику прибыло подкрепление
-        sobaka2.come(klops);  //что к Милордику прибыло подкрепление
+        neznayka.see(milordik);  //Увидев, что к Милордику, Незнайка
+        sobaka1.come(milordik);  //что к Милордику прибыло подкрепление
+        sobaka2.come(milordik);  //что к Милордику прибыло подкрепление
         neznayka.come(gardenWithStrawberry); //Незнайка бросился с холма вниз, с клубникой
         neznayka.toptat(gardenWithStrawberry); //и запрыгал по грядкам с клубникой.
 
         sobaka1.come(neznayka); //Оба пса носились за ним
         sobaka2.come(neznayka); //Оба пса носились за ним
-        //todo ??не разбирая дороги?? (можно добавить метод неразборчивого бега, где координаты будут рандомными(или ещё лучше уменьшать координаты того, за кем бегут на рандом)
         sobaka1.toptat(gardenWithStrawberry); //и безжалостно топтали клубнику.
         sobaka2.toptat(gardenWithStrawberry); //и безжалостно топтали клубнику.
 
-        //todo ??Коротышки бросили работу??
+
+        klops.stopWork(); //коротышки закончили работу
+        fix.stopWork(); //коротышки закончили работу
+        fex.stopWork(); //коротышки закончили работу
+        milordik.stopWork(); //коротышки закончили работу
+        cezarino.stopWork(); //коротышки закончили работу
+
         klops.stop(); //Коротышки остановились.
         neznayka.stop(); //Коротышки остановились.
         fix.stop(); //Коротышки остановились.
@@ -42,7 +51,7 @@ public class Main {
         cezarino.stop();
 
         klops.see(gardenWithStrawberry); //Клопс тут же увидел, для клубники
-        //System.out.println(gardenWithStrawberry); (Некоректно работает вывод, можно просто показать что она true)   //todo ??ничего хорошего для клубники не получается.??
+        System.out.println(gardenWithStrawberry); //ничего хорошего
 
         klops.go(sobaka1); //и принялись бегать за собаками по грядкам.
         klops.go(sobaka2); //принялись
@@ -55,11 +64,11 @@ public class Main {
         milordik.go(sobaka1); //Я
         milordik.go(sobaka2); //Д
         cezarino.go(sobaka1); //К
-        cezarino.go(sobaka2); //Ам. //todo если придумаешь можно сделать краше всё эт
+        cezarino.go(sobaka2); //Ам.
 
 
         klops.go(neznayka);  //Клопс самолично бросился догонять Незнайку
-        trap.checkAndCatch(klops); //и попал ногою в капкан. //todo сделать метод ТОЛЬКО для трапы
+        trap.checkAndCatch(klops); //и попал ногою в капкан.
 
         neznayka.come(gardenWithStrawberry); //В это время Незнайка,
         milordik.come(gardenWithStrawberry); //Милордик и Цезарино перенесли поле

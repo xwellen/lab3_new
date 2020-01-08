@@ -1,17 +1,23 @@
+import java.util.Random;
+import java.util.Random.*;
+
 public abstract class MovingEntity extends Entity implements Catchable{
     boolean catched;
-    public abstract void go(Entity o);
     public abstract void stop();
+    public abstract void messGarden(Garden garden);
     public abstract void run(int x, int y);
-    public abstract void messGarden(Garden garden1, Garden garden2);
+    public abstract void go(Entity o);
 
     public void toptat(Garden garden){
-        garden.setTrampled(true);
-        System.out.println(garden.name + " is tramled by " + this.name);
+        for (int i = 0; i < garden.plants.length; i++) {
+            Random random = new Random();
+            if (random.nextBoolean()) garden.plants[i] = Plants.Dead;
+        }
+        System.out.println(garden.name + " растоптал " + this.name);
     }
 
     public void see(Entity o){
-        System.out.println(name + " uvidel " + o.name);
+        System.out.println(name + " увидел " + o.name);
     }
 
     public void setCatched(boolean catched){
@@ -22,7 +28,7 @@ public abstract class MovingEntity extends Entity implements Catchable{
     public void come(Entity entity) {
         this.positionX = entity.positionX;
         this.positionY = entity.positionY;
-        System.out.println(name + " podbejal k " + entity.name + getCoordinates());
+        System.out.println(name + " подбежал к " + entity.name + getCoordinates());
     }
 
 

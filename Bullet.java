@@ -1,13 +1,5 @@
-public class Bullet extends FlyingEntity {
-    @Override
-    public void flyTo(Object o) {
-
-    }
-
-
-
-    @Override
-    public boolean checkAndCatch(MovingEntity o) {
-        return false;
+public class Bullet extends FlyingEntity{
+    public void flyTo(Entity entity){
+        setPosition(entity.positionX, entity.positionY);
     }
 }

@@ -34,8 +34,5 @@ public class Dog extends MovingEntity {
 
     }
 
-    @Override
-    public boolean checkAndCatch(MovingEntity o) {
-        return false;
-    }
+
 }
