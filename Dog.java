@@ -4,10 +4,6 @@ public class Dog extends MovingEntity {
         this.name = name;
     }
 
-    @Override
-    public void go(Entity o) {
-
-    }
 
     @Override
     public void stop() {
@@ -20,7 +16,7 @@ public class Dog extends MovingEntity {
     }
 
     @Override
-    public void messGarden(Garden garden1, Garden garden2) {
+    public void go(Entity o) {
 
     }
 

@@ -3,10 +3,11 @@ import java.util.Random.*;
 
 public abstract class MovingEntity extends Entity implements Catchable{
     boolean catched;
+    boolean isRunning = false;
     public abstract void stop();
-    public abstract void messGarden(Garden garden);
     public abstract void run(int x, int y);
     public abstract void go(Entity o);
+
 
     public void toptat(Garden garden){
         for (int i = 0; i < garden.plants.length; i++) {

@@ -1,5 +1,5 @@
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Korotyshka klops = new Korotyshka("Клопс", true);
         Korotyshka neznayka = new Korotyshka("Незнайка");
         Korotyshka fix = new Korotyshka("Фикс",true);
@@ -85,6 +85,9 @@ public class Main {
 
         gardenWithogurtsiIPomidory.mess(); //В одну минуту там все было перепутано, и уже трудно было разобрать, где росли огурцы и где помидоры.
 
+        Gun gun1 = new Gun(null);
+
+        test.shoot(gun1, neznayka);
         //todo Фикс и Фекс моментально исчезли и через минуту возвратились с ружьем.
         //Фикс, в руках у которого было ружье, прицелился и выпалил.
         //Пуля просвистела в двух шагах от Незнайки.

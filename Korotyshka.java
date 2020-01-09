@@ -1,5 +1,5 @@
 public class Korotyshka extends MovingEntity {
-    boolean CanReleaseItself;
+    public boolean CanReleaseItself;
     private boolean isWorking;
     Gun weapon;
     int Accuracy;
@@ -32,20 +32,16 @@ public class Korotyshka extends MovingEntity {
 
     @Override
     public void stop() {
+        this.isRunning = false;
         System.out.println(name + " остановился в" + getCoordinates());
     }
 
     @Override
     public void run(int x, int y) {
+        this.isRunning = true;
         positionX = positionX + x;
         positionY = positionY + y;
         System.out.println(name + " бежит в " + getCoordinates());
-    }
-
-    @Override
-    public void messGarden(Garden garden) {
-        garden.mess();
-        System.out.println();
     }
 
     @Override
@@ -81,22 +77,13 @@ public class Korotyshka extends MovingEntity {
         System.out.println(this.name + " начал работу");
     }
 
-    public boolean shoot(Gun gun, Object o) {
-        //стреляем с помощью gun в o, если попали(смотрим accuracy>100) то возвращаем true
-        return false;
+    public void shoot(Entity entity) throws Exception {
+        this.weapon.launchAmmo(entity);
+        System.out.println();
     }
 
-    public void takeGun(Gun gun) throws Exception{
-        try{
-            weapon = gun;
-        }
-        catch (Exception ex){
-            System.out.println(ex.getMessage());
-        }
-
-        if (!(gun.positionX == this.positionX && gun.positionY == this.positionY)){
-            throw new Exception("Нельзя взять ружье!");
-        }
+    public void takeGun(Gun gun) throws Exception {
+        weapon = gun;
     }
 
 }
