@@ -3,9 +3,9 @@ public class Korotyshka extends MovingEntity {
     private boolean isWorking;
     Gun weapon;
     int Accuracy;
-    Leg leg;
+    Leg leg = new Korotyshka.Leg();
 
-    public class Leg implements Catchable{
+    public class Leg extends Entity implements Catchable{
         boolean IsCatched;
         public boolean isCatched() {
             return IsCatched;
@@ -13,12 +13,16 @@ public class Korotyshka extends MovingEntity {
 
         @Override
         public void release() {
+            setCatched(false);
+        }
 
+        public void setCatched(boolean value){
+            IsCatched = value;
         }
 
         @Override
         public String toString() {
-            return "Нога коротышки " + name;
+            return "Нога коротышки " + Korotyshka.super.name;
         }
     }
 
@@ -26,7 +30,7 @@ public class Korotyshka extends MovingEntity {
         this.name = name;
         this.isWorking = false;
         this.Accuracy = 100;
-        leg = new Korotyshka.Leg();
+
     }
 
     public Korotyshka(String name, boolean workStatus){
@@ -45,6 +49,8 @@ public class Korotyshka extends MovingEntity {
     public void go(Entity o) {
         positionX = o.positionX - 1;
         positionY = o.positionY - 1;
+        leg.setPosition(positionX,positionY);
+        if (weapon != null) weapon.setPosition(positionX,positionY);
         System.out.println(name + " побежал за " + o.getName() + getCoordinates());
     }
 
@@ -59,13 +65,17 @@ public class Korotyshka extends MovingEntity {
         this.isRunning = true;
         positionX = positionX + x;
         positionY = positionY + y;
+        leg.setPosition(positionX,positionY);
+        if (weapon != null) weapon.setPosition(positionX,positionY);
         System.out.println(name + " бежит в " + getCoordinates());
     }
 
-//    @Override
-//    public boolean isCatched() {
-//        return catched;
-//    }
+
+
+    @Override
+    public boolean isCatched() {
+        return leg.IsCatched;
+    }
 
     @Override
     public void release() throws Error{
@@ -98,12 +108,25 @@ public class Korotyshka extends MovingEntity {
     }
 
     public void shoot(Entity entity) throws Exception {
-        this.weapon.launchAmmo(entity);
-        System.out.println();
+        this.weapon.launchAmmo(entity, this.Accuracy);
     }
 
     public void takeGun(Gun gun) throws Exception {
         weapon = gun;
     }
 
+    @Override
+    public String toString() {
+        return "Name: " + super.name + "\n" + getCoordinates();
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
 }

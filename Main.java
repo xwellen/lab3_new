@@ -2,7 +2,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         Korotyshka klops = new Korotyshka("Клопс", true);
         Korotyshka neznayka = new Korotyshka("Незнайка");
-        Korotyshka fix = new Korotyshka("Фикс",true);
+        Korotyshka fix = new Korotyshka("Фикс",true, 60);
         Korotyshka fex = new Korotyshka("Фекс", true);
         Korotyshka milordik = new Korotyshka("Милордик", true);
         Korotyshka cezarino = new Korotyshka("Цезарино", true);
@@ -21,7 +21,8 @@ public class Main {
         }
         Garden gardenWithogurtsiIPomidory = new Garden(ogurtsiIPomidory, "Огород с огурцами помидорами");  //выше создаём и заполняем
 
-        trap.setPosition(1,2);  //поставили коорды ловушки
+        //trap.setPosition(1,2);  //поставили коорды ловушки
+        trap.setPosition(-3,-3);
         gardenWithStrawberry.setPosition(-1, -1); //поставили коорды грядки с Клубничкой ;)
         gardenWithogurtsiIPomidory.setPosition(-3, -3); //поставили коорды грядки с овощами
 
@@ -68,7 +69,15 @@ public class Main {
 
 
         klops.go(neznayka);  //Клопс самолично бросился догонять Незнайку
-        trap.checkAndCatch(klops.); //и попал ногою в капкан.
+//        System.out.println(klops);
+//        System.out.println(trap);
+        try{
+            trap.checkAndCatch(klops.leg);
+        }
+        catch (Exception ex){
+            System.out.println(ex.getMessage());
+        }
+         //и попал ногою в капкан.
 
         neznayka.come(gardenWithStrawberry); //В это время Незнайка,
         milordik.come(gardenWithStrawberry); //Милордик и Цезарино перенесли поле
@@ -86,10 +95,21 @@ public class Main {
         gardenWithogurtsiIPomidory.mess(); //В одну минуту там все было перепутано, и уже трудно было разобрать, где росли огурцы и где помидоры.
 
         Gun gun1 = new Gun(null);
+        gun1.setPosition(5,5);
 
         //test.shoot(gun1, neznayka);
-        //todo Фикс и Фекс моментально исчезли и через минуту возвратились с ружьем.
-        //Фикс, в руках у которого было ружье, прицелился и выпалил.
+        int fixX = fix.positionX;
+        int fixY = fix.positionY;
+        int fexX = fex.positionX;
+        int fexY = fex.positionY;
+        fix.come(gun1);//Фикс и Фекс моментально исчезли и через минуту возвратились с ружьем.
+        fex.come(gun1);//Фикс и Фекс моментально исчезли и через минуту возвратились с ружьем.
+        fix.takeGun(gun1);
+        fix.run(fixX,fixY);
+        fex.run(fexX,fexY);
+        fix.shoot(neznayka);//Фикс, в руках у которого было ружье, прицелился и выпалил.
+
+
         //Пуля просвистела в двух шагах от Незнайки.
     }
 }

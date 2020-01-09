@@ -17,6 +17,4 @@ public abstract class Entity implements Positionable {
         this.positionY = positionY;
     }
 
-
-
 }
