@@ -4,6 +4,11 @@ import java.util.Random;
 public class Garden extends Entity{
     public Plants[] plants;
 
+    public enum Plants {
+        Cucumber, Tomato, Stawberry, Dead
+    }
+
+
 
 
 

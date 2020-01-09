@@ -3,12 +3,30 @@ public class Korotyshka extends MovingEntity {
     private boolean isWorking;
     Gun weapon;
     int Accuracy;
+    Leg leg;
 
+    public class Leg implements Catchable{
+        boolean IsCatched;
+        public boolean isCatched() {
+            return IsCatched;
+        }
+
+        @Override
+        public void release() {
+
+        }
+
+        @Override
+        public String toString() {
+            return "Нога коротышки " + name;
+        }
+    }
 
     public Korotyshka(String name) {
         this.name = name;
         this.isWorking = false;
         this.Accuracy = 100;
+        leg = new Korotyshka.Leg();
     }
 
     public Korotyshka(String name, boolean workStatus){
@@ -44,10 +62,10 @@ public class Korotyshka extends MovingEntity {
         System.out.println(name + " бежит в " + getCoordinates());
     }
 
-    @Override
-    public boolean isCatched() {
-        return catched;
-    }
+//    @Override
+//    public boolean isCatched() {
+//        return catched;
+//    }
 
     @Override
     public void release() throws Error{
@@ -64,6 +82,8 @@ public class Korotyshka extends MovingEntity {
     public void release(MovingEntity movingEntity) {
         movingEntity.setCatched(false);
     }
+
+
 
 
 

@@ -9,15 +9,15 @@ public class Main {
         Dog sobaka1 = new Dog("Собака1");
         Dog sobaka2 = new Dog("Собака2");   //выше создаём всех чертей
         Trap trap = new Trap();
-        Plants[] klubnika = new Plants[15];
+        Garden.Plants[] klubnika = new Garden.Plants[15];
         for (int i = 0; i < klubnika.length; i++) {
-            klubnika[i] = Plants.Stawberry;
+            klubnika[i] = Garden.Plants.Stawberry;
         }
         Garden gardenWithStrawberry = new Garden(klubnika, "Огород с клубникой");
-        Plants[] ogurtsiIPomidory = new Plants[15];
+        Garden.Plants[] ogurtsiIPomidory = new Garden.Plants[15];
         for (int i = 0; i < ogurtsiIPomidory.length; i++) {
-            if (i<ogurtsiIPomidory.length/2) ogurtsiIPomidory[i] = Plants.Cucumber;
-            else ogurtsiIPomidory[i] = Plants.Tomato;
+            if (i<ogurtsiIPomidory.length/2) ogurtsiIPomidory[i] = Garden.Plants.Cucumber;
+            else ogurtsiIPomidory[i] = Garden.Plants.Tomato;
         }
         Garden gardenWithogurtsiIPomidory = new Garden(ogurtsiIPomidory, "Огород с огурцами помидорами");  //выше создаём и заполняем
 
@@ -68,7 +68,7 @@ public class Main {
 
 
         klops.go(neznayka);  //Клопс самолично бросился догонять Незнайку
-        trap.checkAndCatch(klops); //и попал ногою в капкан.
+        trap.checkAndCatch(klops.); //и попал ногою в капкан.
 
         neznayka.come(gardenWithStrawberry); //В это время Незнайка,
         milordik.come(gardenWithStrawberry); //Милордик и Цезарино перенесли поле
@@ -87,7 +87,7 @@ public class Main {
 
         Gun gun1 = new Gun(null);
 
-        test.shoot(gun1, neznayka);
+        //test.shoot(gun1, neznayka);
         //todo Фикс и Фекс моментально исчезли и через минуту возвратились с ружьем.
         //Фикс, в руках у которого было ружье, прицелился и выпалил.
         //Пуля просвистела в двух шагах от Незнайки.

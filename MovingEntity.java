@@ -12,7 +12,7 @@ public abstract class MovingEntity extends Entity implements Catchable{
     public void toptat(Garden garden){
         for (int i = 0; i < garden.plants.length; i++) {
             Random random = new Random();
-            if (random.nextBoolean()) garden.plants[i] = Plants.Dead;
+            if (random.nextBoolean()) garden.plants[i] = Garden.Plants.Dead;
         }
         System.out.println(garden.name + " растоптал " + this.name);
     }
